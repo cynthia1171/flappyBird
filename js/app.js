@@ -1,0 +1,85 @@
+/**almacenamos el fondo en movimiento */
+var fondoJuego;
+var boton;
+var flappy;
+
+/**se inicializa a variable juego, con la medida del juego, y donde se mostrara(div del html) */
+var juego = new Phaser.Game(144, 256, Phaser.CANVAS, 'bloque_juego');
+
+/**creamos el estado principal del juego */
+var estadoPrincipal = {
+
+  /**preload cargara todos los recursos de nuestro juego */
+  preload: function(){
+
+    /**asignamos un color de fondo al juego 
+    juego.stage.backgroundColor = '#000';*/
+
+    /**crgamos la imagen de  fondo */
+    juego.load.image('fondo', 'img/fondo.png');
+
+    juego.load.spritesheet('pajaros', 'img/pajaros.png',)
+
+    /**cargamos al personaje a la escena 
+    juego.load.image('pajaro', 'img/bird_orange_0.png');
+
+    *cargamos al boton 
+    juego.load.image('btn', 'img/button_play_normal.png');*/
+  },
+
+
+  /**se corre una vez que inicia el juego, mostramos en pantalla los recursos que cargamos en preload */
+  create: function(){
+
+    /**cargamos la imagen en la pantalla */
+    fondoJuego = juego.add.tileSprite(0, 0, 144, 256, 'fondo');
+
+    /**agregamos la imagen del personaje al juego(x,y,nombreSrite) 
+    flappy = juego.add.sprite(juego.width/2, juego.height/2, 'pajaro');
+    flappy.anchor.setTo(0.5);
+    flappy.scale.setTo(2);
+
+    *voltear imagen
+     * flappy.scale.setTo(1,-1);
+     * 
+     * rotar sprite, valor positivo lo rota segun las manecillas del reloj
+     * flappy.angle = 90;
+     * 
+     * 
+     */
+    
+
+
+
+    /**anchor point = punto de poyo */
+    /**
+     * boton = juego.add.sprite(juego.width/2, juego.height/2, 'btn');
+    <<alineamos el boton al centro en x e y >>
+    boton.anchor.setTo(0.5, 0.5);
+     */
+
+
+
+  },
+
+  /**animamos el juego */
+  update: function(){
+
+    /**cada vez que se actualice la escena, se vera como si corriera el fondo(como si se moviera)
+    fondoJuego.tilePosition.x -= 1;
+    *
+    *rota imagen
+    *flappy.angle += 2;
+    */
+    
+
+
+  }
+
+};
+
+/**primer parametro es el nombre con el cual nos referimos al estado, el segundo es el objeto */
+juego.state.add('principal', estadoPrincipal);
+
+/**iniciamos el juego con el estado por defecto */
+juego.state.start('principal');
