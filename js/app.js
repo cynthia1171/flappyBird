@@ -18,7 +18,7 @@ var estadoPrincipal = {
     /**crgamos la imagen de  fondo */
     juego.load.image('fondo', 'img/fondo.png');
 
-    juego.load.spritesheet('pajaros', 'img/pajaros.png',)
+    juego.load.spritesheet('pajaros', 'img/pajaros.png', 36, 26);
 
     /**cargamos al personaje a la escena 
     juego.load.image('pajaro', 'img/bird_orange_0.png');
@@ -34,6 +34,10 @@ var estadoPrincipal = {
     /**cargamos la imagen en la pantalla */
     fondoJuego = juego.add.tileSprite(0, 0, 144, 256, 'fondo');
 
+    flappy = juego.add.sprite(100, 100, 'pajaros');
+
+    flappy.frame = 1;
+    flappy.animations.add('vuelo', [0,1,2], 10, true);
     /**agregamos la imagen del personaje al juego(x,y,nombreSrite) 
     flappy = juego.add.sprite(juego.width/2, juego.height/2, 'pajaro');
     flappy.anchor.setTo(0.5);
@@ -71,7 +75,7 @@ var estadoPrincipal = {
     *rota imagen
     *flappy.angle += 2;
     */
-    
+    flappy.animations.play('vuelo');
 
 
   }
